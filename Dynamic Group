@@ -1,0 +1,45 @@
+ldapsearch -h XXX.XXX -p 389 -b "XXX" -s base -w XXX -D "XXX" aclentry aclpropagate aclsource entryowner ownerpropagate ownersource ibm-filterAclEntry ibm-filterAclInherit ibm-effectiveAcl
+
+ldapsearch -h XXX.XXX -p 389 -b "XXX" -s base -w XXX -D "XXX" aclentry aclpropagate aclsource entryowner ownerpropagate ownersource ibm-filterAclEntry ibm-filterAclInherit ibm-effectiveAcl
+
+ldapsearch -h XXX.XXX -p 389 -b "XXX" -s base -w XXX -D "XXX" aclentry aclpropagate aclsource entryowner ownerpropagate ownersource ibm-filterAclEntry ibm-filterAclInherit ibm-effectiveAcl
+
+ldapsearch -h XXX.XXX -p 389 -b "XXX"" -s sub -w XXX" -D "XXX" departmentNumber=1000055
+
+ldapsearch -h XXX.XXX -p 389 -b "XXX"" -s sub -w XXX" -D "XXX" "(&(departmentNumber=1000055)(st=*))"
+
+ldapsearch -h XXX.XXX -p 389 -b "XXX" -s sub -w cognosXXX" -D "XXX" 
+
+ldapdelete -h XXX.XXX -p 389 -D cn=root -w XXX" cn=Cog1000055,XXX"
+
+ldapmodify -h XXX.XXX -p 389 -w XXX" -D "XXX" <<EOF1
+dn: cn=Cog1000055,XXX"
+changetype: add
+objectclass: groupOfURLs
+objectclass: ibm-dynamicGroup
+cn: users
+memberURL: ldap:///XXX"??sub?(&(departmentNumber=1000055)(st=*))
+EOF1
+
+
+ldapsearch -h XXX.XXX -p 389 -b "XXX" -s sub -w cognosXXX" -D "XXX"
+
+ldapsearch -h XXX.XXX -p 389 -b "XXX"" -s sub -w XXX" -D "XXX" uid=mengtest
+
+ldapmodify -h XXX.XXX -p 389 -w XXX" -D "XXX" <<EOF1
+dn: dc=com
+changetype: modify
+add: aclEntry
+aclEntry: access-id:CN=3BD0CAD20A4A4D694162,XXX":system:rsc:critical:rwsc:sensitive:rwsc:normal:rwsc:object:ad:at.ibm-allMembers:rsc
+...
+EOF1
+
+ldapsearch -h XXX.XXX -p 389 -b "XXX" -s base -w XXX" -D "XXX" aclentry aclpropagate aclsource entryowner ownerpropagate ownersource ibm-filterAclEntry ibm-filterAclInherit ibm-effectiveAcl
+
+ldapmodify -h XXX.XXX -p 389 -w XXX" -D "XXX" <<EOF1
+dn: cn=Cog1000055,XXX"
+changetype: modify
+add: aclPropagate
+aclPropagate: true
+EOF1
+
